@@ -1,6 +1,6 @@
 # mcp-docs
 
-MCP server exposing the mastrocola.dev architecture documentation ([docs](https://github.com/mastrocola-dev/docs)) to agents. Read-only, stdio transport.
+MCP server exposing the mastrocola.dev architecture documentation ([docs](https://github.com/mastrocola-dev/docs)) to agents. Read-only, stdio transport. Consumed by the `docs` and `adr-index` instances of [service-agent](https://github.com/mastrocola-dev/service-agent); cross-repository conventions are recorded in [ADR-004](https://github.com/mastrocola-dev/docs/blob/main/adr/004-typescript-without-build.md).
 
 ## Run
 
