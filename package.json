@@ -2,6 +2,7 @@
   "name": "mcp-docs",
   "private": true,
   "type": "module",
+  "main": "src/function.ts",
   "engines": {
     "node": ">=24"
   },
@@ -14,6 +15,7 @@
     "test:coverage": "node --test --experimental-test-coverage --test-coverage-exclude='test/**'"
   },
   "dependencies": {
+    "@azure/functions": "^4.16.5",
     "@modelcontextprotocol/server": "^2.1.0",
     "zod": "^4.6.5"
   },
