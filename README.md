@@ -20,6 +20,10 @@ The only argument is the root of a `docs` checkout. The server reads files; it k
 
 Both wrap the same `createServer`. `src/http.ts` holds the transport-neutral part: a fetch-shaped handler that builds a fresh server per request, so nothing is kept between calls. The function is anonymous at the Functions level; callers are authenticated by the platform with Entra ID before a request reaches the code.
 
+## Deploy
+
+This repository has no deploy pipeline and no Azure identity. The server is deployed from [docs](https://github.com/mastrocola-dev/docs#served-to-the-agent), together with the documents it serves, on every push there; that workflow checks this repository out at a pinned tag. A new version reaches production by tagging it here and changing the tag there.
+
 ## Tools
 
 | Tool | Input | Returns |
@@ -45,5 +49,5 @@ npm run test:coverage
 - **Naive search on purpose.** Substring matching is enough for a handful of documents; semantic search belongs to the future `mcp-rag`.
 - **Run from a checkout, no package.** Node refuses type stripping inside `node_modules`, so publishing would require a build step. Locally, hosts start the server from a sibling checkout; in the cloud, the server is deployed as a function app with its sources, so a package is never needed.
 - **Stateless HTTP.** One server instance per request and no session: any instance answers any call, which is what scale to zero needs. Server-initiated streams are not offered.
-- **Conventions copied from `service-agent`.** Node 24 type stripping, Biome, EditorConfig, `node:test`. A shared template is extracted only when a third repository shows what is truly common.
+- **Conventions copied from `service-agent`.** Node 24 type stripping, Biome, EditorConfig, `node:test`. A shared template is extracted only when a third MCP server shows what is truly common to servers.
 - **`lineWidth: 320`.** Author's choice: lines are not wrapped by the formatter.
